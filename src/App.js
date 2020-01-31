@@ -8,19 +8,17 @@ function App() {
 
   const [user, setUser] = useState({});
   const [notes, setNotes] = useState([{id:'123',text:'words'}]);
-  //const [vacations, setVacations] = useState([]);
-  //const [companies, setCompanies] = useState([]);
+  const [vacations, setVacations] = useState([]);
+  const [companies, setCompanies] = useState([]);
 
   const newUser = ()=>{
     fetchUser().then(res=>{
       setUser(res);
       fetchData(res.id).then(({notes, companies, vacations})=>
         {
-          console.log(notes.data);
-          setNotes(notes.data);
-          console.log(companies.data);
-
-          console.log(vacations.data);
+          setNotes(notes.data); console.log(notes.data);
+          setVacations(vacations.data); console.log(companies.data);
+          setCompanies(companies.data); console.log(vacations.data);
         });
     })
   }
@@ -30,21 +28,20 @@ function App() {
   return (
     <div className="App">
       <UserHeader user = {user} newUser = {newUser}/>
-      <div>for reference {user.id}</div>
       <div className = 'container'>
-        <div className = 'notes'>
-          <h2> Notes Section ({notes.length}) </h2>
-          {
-          notes.map(note=> <div key = {note.id}> {note.text} </div>)
-          }
-        </div>
-
-
+          <div className = 'section'> 
+            <h3>Notes</h3> 
+            <p> You have {notes.length} notes.</p> 
+          </div>
+          <div className = 'section'> 
+            <h3>Vacations Section</h3>
+            <p> You have {vacations.length} vacations.</p> 
+          </div>
+          <div className = 'section'>
+            <h3>Following Companies</h3>
+            <p> You are following {companies.length} companies.</p>
+          </div>
       </div>
-      
-      
-
-  
     </div>
   );
 }
