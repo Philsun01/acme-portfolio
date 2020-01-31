@@ -19,6 +19,7 @@ function App() {
           console.log(notes.data);
           setNotes(notes.data);
           console.log(companies.data);
+
           console.log(vacations.data);
         });
     })
