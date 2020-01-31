@@ -7,9 +7,10 @@ const UserHeader = ({user, newUser}) => {
             <img src = {user.avatar} alt = {`${user.fullName} avatar`}/>
             <div> {user.fullName} </div>
             <button className = 'newUser' onClick = { () => {
-            window.localStorage.removeItem('userId');
-            newUser();  
-            }}>Get New User</button>
+                window.localStorage.removeItem('userId');
+                newUser();  
+                }}>Get New User
+            </button>
         </div>
     )
 }

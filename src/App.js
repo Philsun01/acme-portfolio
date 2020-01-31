@@ -12,32 +12,38 @@ function App() {
   //const [companies, setCompanies] = useState([]);
 
   const newUser = ()=>{
-    fetchUser().then(res=>setUser(res));
+    fetchUser().then(res=>{
+      setUser(res);
+      fetchData(res.id).then(res=>{
+        console.log(res.data);
+        setNotes(res.data);
+      });
+    })
   }
 
   useEffect(()=> newUser(), []);
 
   useEffect(()=>{
-    console.log('Loaded a new user');
-    console.log(user);
+    //console.log('Loaded a new user');
+    //console.log(user);
   }, [user])
 
   useEffect( ()=>{
-    
-    if(user.id !== 'undefined'){
-      console.log(`fetching from userId ${user.Id}`);
+      //console.log(user);
+    //if(Boolean(user.id)){
+      //console.log(`fetching from userId ${user.Id}`);
       //fetchData(user.id).then(res=>setNotes(res));
-    }
+    //}
   },[user])
 
   return (
     <div className="App">
       <UserHeader user = {user} newUser = {newUser}/>
-      <div>{user.id}</div>
+      <div>for reference {user.id}</div>
       <div className = 'notes'>
-        <h2> Notes Section </h2>
+        <h2> Notes Section ({notes.length}) </h2>
         {
-         notes.map((note, idx)=> <div key = {idx}> Hello</div>)
+         notes.map((note, idx)=> <div key = {idx}> {note.text} </div>)
         }
 
       </div>
