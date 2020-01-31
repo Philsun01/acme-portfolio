@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+}
+
+body {
+  background-color: lightslategrey;
+}
+
+img {
+  border-radius: 50%;
+  height: 5rem;
+  width: 5rem;
+}
+
+
+
+.header {
+ background-color: lightseagreen;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-around;
+ align-items: center;
+ padding: 1rem;
+ font-size: 3rem;
+}
