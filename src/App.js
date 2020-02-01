@@ -50,6 +50,7 @@ function App() {
   return (
     <div className="App">
       <UserHeader user = {user} newUser = {newUser}/>
+      {params.view !== 'home' && <a href = {'#view=home'}>Go Back</a> }
       {params.view === 'home' && <Home notesQty = {notes.length}
             vacationsQty = {vacations.length}
             companiesQty = {followingCompanies.length} />}
