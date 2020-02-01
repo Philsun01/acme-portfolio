@@ -10,7 +10,6 @@ const fetchData = async (userId) => {
     
     const [notes, companies, vacations] = await Promise.all([notesAPI, companiesAPI, vacationsAPI])
     
-    
     return {notes, companies, vacations};
 
 }
