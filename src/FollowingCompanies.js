@@ -5,17 +5,17 @@ const FollowingCompanies = ({followingCompanies}) => {
     return (
         <div>
             <h2>Following Companies</h2>
+            <div className = 'add-note'>
             {
-            
-            followingCompanies.map(company => {
-                return(
-                    <div key = {company.id}> 
-                        {company.companyId}
-                    </div>
-                )
-            })
-            
+                followingCompanies.map(company => {
+                    return(
+                        <div key = {company.id}> 
+                            {company.companyId}
+                        </div>
+                    )
+                })
             }
+            </div>
         </div>
 
     )
