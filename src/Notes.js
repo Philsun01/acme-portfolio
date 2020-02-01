@@ -16,6 +16,16 @@ const Notes = ({notes, setNotes, userId}) => {
         .catch(ex => console.log(ex))   
     }
 
+    const deleteNote = (noteId) => {
+
+        const newNotes = notes.filter(note => note.id !== noteId);
+        axios.delete(`${API}/${noteId}`)
+        .then(res => {
+            console.log(res);
+            setNotes(newNotes);
+        } )
+    }
+
     return (
         <div>
             <h1> Notes Here</h1>
@@ -29,7 +39,7 @@ const Notes = ({notes, setNotes, userId}) => {
                         <br/>
                         <button>Submit</button>
                     </form>
-                    <p>Reach Limit of 5 notes. Please delete a note to add more</p>
+                    <p>Max Limit of 5 notes.</p>
                 </div>
                 <div className = 'container-notes'>
                 {
@@ -38,7 +48,7 @@ const Notes = ({notes, setNotes, userId}) => {
                     <div key = {note.id}
                         className = 'note-card'>
                         {note.text}
-                        <button onClick = {() => console.log(note.id)}>
+                        <button onClick = {() => deleteNote(note.id)}>
                             Delete Note
                         </button>
                     </div>)
