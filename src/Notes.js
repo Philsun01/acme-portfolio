@@ -1,13 +1,19 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 
-const Notes = ({notes, userId}) => {
+const Notes = ({notes, setNotes, userId}) => {
 
     const API = `https://acme-users-api-rev.herokuapp.com/api/users/${userId}/notes`;
-    const [text, setText] = useState('');
+    const [noteText, setNoteText] = useState('');
     
     const submit = (ev) => {
         ev.preventDefault();
-        console.log('submitted');
+        axios.post(API, { archived: false, text: noteText })
+        .then(res => {
+            console.log(res.data);
+            setNotes([res.data, ...notes])
+        })
+        .catch(ex => console.log(ex))   
     }
 
     return (
@@ -16,13 +22,14 @@ const Notes = ({notes, userId}) => {
             <div className = 'container-sub'>
                 <div className = 'add-note'>
                     <h2> Add Note</h2>
-                    <form onSubmit = {()=> submit()}>
+                    <form onSubmit = {(ev)=> submit(ev)}>
                         <input id = 'add-note-form' type = 'text' 
-                            value = {text}
-                            onChange = { ev => setText(ev.target.value)} />
+                            value = {noteText}
+                            onChange = { ev => setNoteText(ev.target.value)} />
                         <br/>
                         <button>Submit</button>
                     </form>
+                    <p>Reach Limit of 5 notes. Please delete a note to add more</p>
                 </div>
                 <div className = 'container-notes'>
                 {

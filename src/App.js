@@ -54,7 +54,7 @@ function App() {
       {params.view === 'home' && <Home notesQty = {notes.length}
             vacationsQty = {vacations.length}
             companiesQty = {followingCompanies.length} />}
-      {params.view === 'notes' && <Notes notes = {notes}/>}
+      {params.view === 'notes' && <Notes notes = {notes} setNotes = {setNotes} userId = {user.id}/>}
       {params.view === 'vacations' && <Vacations vacations = {vacations}/>}
       {params.view === 'followingcompanies' && <FollowingCompanies followingCompanies = {followingCompanies}/>}
 
