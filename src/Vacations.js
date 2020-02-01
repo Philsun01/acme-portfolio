@@ -10,8 +10,8 @@ const Vacations = ({vacations, setVacations, userId}) => {
         ev.preventDefault();
         axios.post(API, vac)
         .then(res => {
-            console.log(res);
-            setVacations([res,...vacations]);
+            console.log(res.data);
+            setVacations([res.data,...vacations]);
         })
         .catch(ex => console.log(ex))
     }
@@ -42,7 +42,7 @@ const Vacations = ({vacations, setVacations, userId}) => {
                             <br/>
                             <button>Submit</button>
                         </form>
-                        <p>Max Limit of 3 Vacations.</p>
+                        {vacations.length > 2 && <p>Max Limit of 3 Vacations.</p>}
                     </div>
                     <div className = 'container-notes'>
                         {
