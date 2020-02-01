@@ -33,6 +33,7 @@ img {
 }
 
 .container-sub {
+  border: dotted;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -55,5 +56,41 @@ img {
   align-items: center;
 
   transition: width 2s, height 2s; 
+}
+
+.container-notes {
+  border: dotted;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 30rem;
+  overflow-y: scroll;
+}
+
+.note-card {
+  background-color: linen;
+  border: solid 1px black;
+  border-radius: 0.5rem;
+  width: 14rem;
+  height: 12rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add-note {
+  background: linen;
+  width: 14rem;
+  height: 14rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+#add-note-form {
+  width: 5rem;
+  height: 5rem;
 }
 
